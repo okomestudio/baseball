@@ -14,8 +14,10 @@ class FangraphItem(Item):
     pass
 
 
-class StandardHitting(Item):
+class BattingSplitItem(Item):
 
+    playerid = Field()
+    split = Field()
     g = Field()
     ab = Field()
     pa = Field()
@@ -35,3 +37,27 @@ class StandardHitting(Item):
     gdp = Field()
     sb = Field()
     cs = Field()
+    avg = Field()
+    bb_perc = Field()
+    k_perc = Field()
+    bb_per_k = Field()
+    obp = Field()
+    slg = Field()
+    ops = Field()
+    iso = Field()
+    babip = Field()
+    wrc = Field()
+    wraa = Field()
+    woba = Field()
+    wrcp = Field()
+    gb_per_fb = Field()
+    ld_perc = Field()
+    gb_perc = Field()
+    fb_perc = Field()
+    iffb_perc = Field()
+    hr_per_fb = Field()
+    ifh_perc = Field()
+    buh_perc = Field()
+    pitches = Field()
+    balls = Field()
+    strikes = Field()

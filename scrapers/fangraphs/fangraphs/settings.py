@@ -20,5 +20,14 @@ HTTPCACHE_ENABLED = True
 HTTPCACHE_EXPIRATION_SECS = 0
 HTTPCACHE_DIR = 'fangraphs'
 
-DOWNLOAD_DELAY = 0.1 #2.0
+DOWNLOAD_DELAY = 0.10 #2.0
 RANDOMIZE_DOWNLOAD_DELAY = True
+
+DOWNLOADER_MIDDLEWARES = {
+    'fangraphs.downloadermiddleware.proxy.ProxyMiddleware': 100,
+}
+
+SPIDER_MIDDLEWARES = {
+    'fangraphs.spidermiddleware.errorpage.ErrorPageMiddleware': 50,
+    #'scrapy.contrib.spidermiddleware.httperror.HttpErrorMiddleware': None,
+}
