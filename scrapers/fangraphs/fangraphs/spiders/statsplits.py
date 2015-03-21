@@ -74,7 +74,7 @@ class StatSplitsSpider(CrawlSpider):
             return self.parse_batting(response)
 
     def _parse_essential(self, response):
-        playerid = self.re_playerid.match(response.url).group(1)
+        playerid = s2int(self.re_playerid.match(response.url).group(1))
         data = defaultdict(dict)
         for i in xrange(1, 4):
             area = response.xpath('//div[@id="SeasonSplits1_dgSeason{}"]'

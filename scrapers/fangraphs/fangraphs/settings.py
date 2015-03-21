@@ -31,3 +31,7 @@ SPIDER_MIDDLEWARES = {
     'fangraphs.spidermiddleware.errorpage.ErrorPageMiddleware': 50,
     #'scrapy.contrib.spidermiddleware.httperror.HttpErrorMiddleware': None,
 }
+
+ITEM_PIPELINES = {
+    'fangraphs.pipelines.FangraphsPipeline': 200,
+}
