@@ -36,6 +36,8 @@ class StatSplitsSpider(CrawlSpider):
     allowed_domains = ['fangraphs.com']
     endpoint = 'http://www.fangraphs.com/statsplits.aspx'
 
+    re_playerid = re.compile(r'.*playerid=(\d+)[!\d].*')
+    
     def __init__(self, *args, **kwargs):
         super(StatSplitsSpider, self).__init__(*args, **kwargs)
 
@@ -72,7 +74,7 @@ class StatSplitsSpider(CrawlSpider):
             return self.parse_batting(response)
 
     def _parse_essential(self, response):
-        playerid = re.match(r'.*playerid=(\d+)[!\d].*', response.url).group(1)
+        playerid = self.re_playerid.match(response.url).group(1)
         data = defaultdict(dict)
         for i in xrange(1, 4):
             area = response.xpath('//div[@id="SeasonSplits1_dgSeason{}"]'
@@ -81,8 +83,7 @@ class StatSplitsSpider(CrawlSpider):
             keys = xp('(.//thead//th/text())').extract()
             for n in xp('.//tbody/tr[not(contains(@class, "rgHeadSpace"))]'):
                 tds = n.xpath('./td/text()').extract()
-                data[tds[1]].update(dict((k, v) for k, v
-                                         in zip(keys[2:], tds[2:])))
+                data[tds[1]].update(dict((k, v) for k, v in zip(keys, tds)))
         return playerid, data
 
     def parse_pitching(self, response):
@@ -90,6 +91,7 @@ class StatSplitsSpider(CrawlSpider):
         for split, v in data.iteritems():
             item = PitchingSplitItem()
             item['playerid'] = playerid
+            item['season'] = s2int(v['Season'])
             item['split'] = split
             xs = [int(x) for x in v['IP'].split('.')]
             item['ip_out'] = 3 * xs[0] + (xs[1] if len(xs) == 2 else 0)
@@ -143,6 +145,7 @@ class StatSplitsSpider(CrawlSpider):
         for split, v in data.iteritems():
             item = BattingSplitItem()
             item['playerid'] = playerid
+            item['season'] = s2int(v['Season'])
             item['split'] = split
             item['g'] = s2int(v['G'])
             item['ab'] = s2int(v['AB'])

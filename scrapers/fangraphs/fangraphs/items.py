@@ -6,6 +6,7 @@ from scrapy import Field, Item
 class BattingSplitItem(Item):
 
     playerid = Field()
+    season = Field()
     split = Field()
     g = Field()
     ab = Field()
@@ -55,6 +56,7 @@ class BattingSplitItem(Item):
 class PitchingSplitItem(Item):
 
     playerid = Field()
+    season = Field()
     split = Field()
     ip_out = Field()
     era = Field()
