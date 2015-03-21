@@ -1,17 +1,6 @@
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
 from scrapy import Field, Item
-
-
-class FangraphItem(Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
 
 
 class BattingSplitItem(Item):
@@ -55,7 +44,53 @@ class BattingSplitItem(Item):
     gb_perc = Field()
     fb_perc = Field()
     iffb_perc = Field()
-    hr_per_fb = Field()
+    hr_per_fb_perc = Field()
+    ifh_perc = Field()
+    buh_perc = Field()
+    pitches = Field()
+    balls = Field()
+    strikes = Field()
+
+
+class PitchingSplitItem(Item):
+
+    playerid = Field()
+    split = Field()
+    ip_out = Field()
+    era = Field()
+    tbf = Field()
+    h = Field()
+    h2 = Field()
+    h3 = Field()
+    r = Field()
+    er = Field()
+    hr = Field()
+    bb = Field()
+    ibb = Field()
+    hbp = Field()
+    so = Field()
+    avg = Field()
+    obp = Field()
+    slg = Field()
+    woba = Field()
+    k_per_9 = Field()
+    bb_per_9 = Field()
+    k_per_bb = Field()
+    hr_per_9 = Field()
+    k_perc = Field()
+    bb_perc = Field()
+    k_minus_bb_perc = Field()
+    whip = Field()
+    babip = Field()
+    lob_perc = Field()
+    fip = Field()
+    xfip = Field()
+    gb_per_fb = Field()
+    ld_perc = Field()
+    gb_perc = Field()
+    fb_perc = Field()
+    iffb_perc = Field()
+    hr_per_fb_perc = Field()
     ifh_perc = Field()
     buh_perc = Field()
     pitches = Field()
