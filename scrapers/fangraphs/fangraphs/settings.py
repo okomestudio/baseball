@@ -1,26 +1,18 @@
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-
-# Scrapy settings for fangraph project
-#
-# For simplicity, this file contains only the most important settings by
-# default. All the other settings are documented here:
-#
-#     http://doc.scrapy.org/en/latest/topics/settings.html
-#
 
 BOT_NAME = 'fangraphs'
 
 SPIDER_MODULES = ['fangraphs.spiders']
 NEWSPIDER_MODULE = 'fangraphs.spiders'
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'fangraphs (+http://www.mydomain.com)'
+USER_AGENT = 'fangraphs scraper'
 
 HTTPCACHE_ENABLED = True
 HTTPCACHE_EXPIRATION_SECS = 0
 HTTPCACHE_DIR = 'fangraphs'
 
-DOWNLOAD_DELAY = 0.10 #2.0
+DOWNLOAD_DELAY = 1.0
 RANDOMIZE_DOWNLOAD_DELAY = True
 
 DOWNLOADER_MIDDLEWARES = {
