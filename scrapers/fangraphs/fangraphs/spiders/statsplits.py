@@ -83,7 +83,8 @@ class StatSplitsSpider(CrawlSpider):
             keys = xp('(.//thead//th/text())').extract()
             for n in xp('.//tbody/tr[not(contains(@class, "rgHeadSpace"))]'):
                 tds = n.xpath('./td/text()').extract()
-                data[tds[1]].update(dict((k, v) for k, v in zip(keys, tds)))
+                split = tds[1].strip()
+                data[split].update(dict((k, v) for k, v in zip(keys, tds)))
         return playerid, data
 
     def parse_pitching(self, response):
